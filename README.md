@@ -1,21 +1,17 @@
+## Choice and concept
+AWS infrastructure has been developed using Terraform as IaC provider. The 'env' variable is used for specifying different development environments (dev, prod, staging), changing this value from ''dev" to "prod" helps with creating a different environment for developing products. Also, it's possible to change the region where infrastructure will be deployed.
 
-  ## AWS IaC using TERRAFORM
-  
-  ### Choice and concept 
-  
-   We develop AWS infrastructure using Terraform to IaC. For developing different infrastructure (dev, prod, staging) we have variable "env", change its value from ''dev" to "prod" we can create a different environment for developing products. Also, we can change the region where deploying infrastructure.
-   
-   If we don't have specific requirements and need to create infrastructure for various languages and frameworks, we need to implement the most common and varied infrastructure. 
-   
-   We choose ec2 instances in autoscaling groups. It's demonstrative, more simple for PoC and debugging . Also, it may be cheaper and more flexible, in most cases.
+In the absence of specific requirements and the need to create infrastructure for various languages and frameworks, the most common and varied infrastructure should be implemented.
 
-  ### Technical solutions
- 
-   At first, we get data from existing vpc to create forward resources. Create security groups to allow communication with resources.
-Сreate the application load balancer, that balances traffic thru 80 port to our targetgroup application, and split traffic between scaled instances. ASG scales its capacity under workload, and we can connect them thru ALB.
+Ec2 instances in autoscaling groups were chosen to simplify PoC and debugging. Also, it may be cheaper and more flexible, in most cases.
 
-   To deploy applications we can use different CI/CD methods. For example, we use the Bash script. But deployment isn't for terraform tasks, most commonly uses Ansible for configuring and gitlabCI or Jenkins for build and deploying.
-   
-   Autoscaling group manages instances count thru scaling policy. They depend on cloudwatch metrics that apply to scale when CPU or memory utilization amount 75% 2 periods 300s each. And scale down when utilization down to 25%. We can control min and max instance count by variables ("asg_min_size"; "asg_max_size").
+## Technical solutions
+First, data is retrieved from existing VPC to create forward resources. Security groups are configured to manage communication with resources. Application load balancer is created and set up on port 80. It distributes traffic between scaled instances of the targetgroup.
 
-   At last, we get outputs that contain ALB DNS name. Its endpoint to check and communicate with our infrastructure.
+Different CI/CD methods could be used to deploy applications. This project is using the Bash script as one of the possible options. Normally, deployment is done outside of the Terraform tasks and is handled by specific tools like Ansible for configuring, GitlabCI or Jenkins for building and deploying.
+
+Auto Scaling group manages instance count through a scaling policy. The number of instances 
+depends on cloudwatch metrics that apply to scale when CPU or memory utilization amount reaches 75% 2 periods 300s each. Scale down takes place when utilization decreases to 25%. Minimal and maximum number of instances is controlled with the corresponding variables ("asg_min_size"; "asg_max_size").
+
+As a result, ALB DNS-name is generated. It should be used as a public network endpoint that routes all traffic to the application hosted on AWS infrastructure.
+
