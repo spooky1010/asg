@@ -63,22 +63,22 @@ resource "aws_lb_listener" "http" {
     }
 }
 
-resource "aws_lb_listener_rule" "asg-listener_rule" {
+resource "aws_lb_listener_rule" "asg_listener_rule" {
     listener_arn    = aws_lb_listener.http.arn
     priority        = 100
 
     action {
         type = "forward"
-        target_group_arn = aws_lb_target_group.asg-target-group.arn
+        target_group_arn = aws_lb_target_group.asg_target_group.arn
     }
 
     condition {
         path_pattern {
-          values = ["/static/*"]
+          values = ["*"]
         }
       }
 }
-resource "aws_lb_target_group" "asg-target-group" {
+resource "aws_lb_target_group" "asg_target_group" {
     name = "aws-lb-target-group-${var.env}"
     port = 8080
     protocol = "HTTP"
@@ -101,7 +101,7 @@ resource "aws_autoscaling_group" "ec2" {
     launch_configuration = aws_launch_configuration.ec2.name
     vpc_zone_identifier = data.aws_subnet_ids.default.ids
 
-    target_group_arns = [aws_lb_target_group.asg-target-group.arn]
+    target_group_arns = [aws_lb_target_group.asg_target_group.arn]
     health_check_type = "ELB"
 
     min_size = var.asg_min_size
