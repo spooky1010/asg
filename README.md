@@ -1,6 +1,7 @@
-  AWS IaC using TERRAFORM
+
+  ## AWS IaC using TERRAFORM
   
-  Choice and concept 
+  ### Choice and concept 
   
    We develop AWS infrastructure using Terraform to IaC. For developing different infrastructure (dev, prod, staging) we have variable "env", change its value from ''dev" to "prod" we can create a different environment for developing products. Also, we can change the region where deploying infrastructure.
    
@@ -8,7 +9,7 @@
    
    We choose ec2 instances in autoscaling groups. It's demonstrative, more simple for PoC and debugging . Also, it may be cheaper and more flexible, in most cases.
 
- Technical solutions
+  ### Technical solutions
  
    At first, we get data from existing vpc to create forward resources. Create security groups to allow communication with resources.
 Сreate the application load balancer, that balances traffic thru 80 port to our targetgroup application, and split traffic between scaled instances. ASG scales its capacity under workload, and we can connect them thru ALB.
