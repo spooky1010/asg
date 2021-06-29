@@ -133,7 +133,7 @@ resource "aws_launch_configuration" "ec2" {
 #########################################################
 # scale rules
 
-resource "aws_autoscaling_policy" "agents-scale-up" {
+resource "aws_autoscaling_policy" "agents-sscale-up" {
     name = "agents-scale-up-${var.env}"
     scaling_adjustment = 1
     adjustment_type = "ChangeInCapacity"
