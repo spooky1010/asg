@@ -1,4 +1,4 @@
-   IaC TERRAFORM INFRUSTRUCTURE
+  AWS IaC using TERRAFORM
    
    We develop AWS infrastructure using Terraform to IaC. For developing different infrastructure (dev, prod, staging) we have variable "env", change its value from ''dev" to "prod" we can create a different environment for developing products. Also, we can change the region where deploying infrastructure.
    
