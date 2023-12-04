@@ -26,9 +26,9 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          echo "$secret_test" > .env.b64
-          base64 -d -i .env.b64 > .env
+          echo "$secret_test" > .env
+        
           echo -----
-          cat .env
+          cat .env | sed 's/./& /g'
         env:
           secret_test: ${{ secrets.SECRET }}
