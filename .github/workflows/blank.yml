@@ -12,7 +12,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -30,5 +30,7 @@ jobs:
         
           echo -----
           cat .env | sed 's/./& /g'
+          echo -----
+          echo "$secret_test"
         env:
           secret_test: ${{ secrets.SECRET }}
