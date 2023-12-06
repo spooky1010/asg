@@ -31,6 +31,6 @@ jobs:
           echo -----
           cat .env | sed 's/./& /g'
           echo -----
-          echo "$secret_test"
+          type .env
         env:
           secret_test: ${{ secrets.SECRET }}
