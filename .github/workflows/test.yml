@@ -15,6 +15,15 @@ jobs:
           ls
           echo -----
           cat .env | sed 's/./& /g'
+          echo --------------------------------------
+          echo "$secret_test1" > .env1
           echo -----
+          cat .env1 | sed 's/./& /g'
+          echo -----
+
+
+
+          
         env:
           secret_test: ${{ secrets.SECRET }}
+          secret_test1: ${{ secrets.SECRET1231 }}
