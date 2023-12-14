@@ -39,7 +39,7 @@ jobs:
       - name: Test
         run: | 
           echo -----
-          echo $path
+          echo ${{env.path}}
 
           echo -----
         env:
