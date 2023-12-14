@@ -34,3 +34,13 @@ jobs:
           type .env
         env:
           secret_test: ${{ secrets.SECRET }}
+
+
+      - name: Test
+        run: | 
+          echo -----
+          echo $path
+
+          echo -----
+        env:
+          path: "/release/build/"
