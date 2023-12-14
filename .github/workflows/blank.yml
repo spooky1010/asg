@@ -20,13 +20,15 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Rename spaces
+        run: |
+          ls
+          Rename-Item -Path "test test test.txt" -NewName "test_test_test.txt"
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          echo "$secret_test" > .env
+          echo "$env.secret_test" > .env
         
           echo -----
           cat .env | sed 's/./& /g'
