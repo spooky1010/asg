@@ -31,7 +31,8 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo "$env.secret_test" > .env
-        
+
+     
           echo -----
           cat .env | sed 's/./& /g'
           echo -----
@@ -48,3 +49,16 @@ jobs:
           echo -----
         env:
           path: "/release/build/"
+
+
+      - name: Archive  artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: test_test
+          path: "test_test_test.txt"
+
+      - name: Archive space  artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: test_test
+          path: "test test test.txt"
