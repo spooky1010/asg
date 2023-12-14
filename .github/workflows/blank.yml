@@ -24,6 +24,8 @@ jobs:
         run: |
           ls
           Rename-Item -Path "test test test.txt" -NewName "test_test_test.txt"
+          echo ---------------
+          ls
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
