@@ -16,11 +16,16 @@ jobs:
           echo -----
           cat .env | sed 's/./& /g'
           echo --------------------------------------
-          #echo "$secret_test1" > .env1
-          #echo -----
-          #cat .env1 | sed 's/./& /g'
-          #echo -----
-
+          echo --------------------------------------
+          echo "$secret_test" > .env1
+          echo -----
+          cat .env1 | sed 's/./& /g'
+          echo --------------------------------------
+          echo --------------------------------------
+          echo "$env.secret_test" > .env2
+          echo -----
+          cat .env2 | sed 's/./& /g'
+          echo --------------------------------------
 
 
           
