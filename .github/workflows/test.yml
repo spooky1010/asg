@@ -10,16 +10,16 @@ jobs:
     steps:
       - name: Run a multi-line script
         run: |
-          echo "$secret_test" > .env
+          echo ${{ secrets.SECRET }} > .env
           echo -----
           ls
           echo -----
           cat .env | sed 's/./& /g'
           echo --------------------------------------
-          echo "$secret_test1" > .env1
-          echo -----
-          cat .env1 | sed 's/./& /g'
-          echo -----
+          #echo "$secret_test1" > .env1
+          #echo -----
+          #cat .env1 | sed 's/./& /g'
+          #echo -----
 
 
 
