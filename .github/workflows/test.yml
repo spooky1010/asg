@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Run a multi-line script
         run: |
-          echo ${{ secrets.SECRET }} > .env
+          echo "${{ secrets.SECRET }}" > .env
           echo -----
           ls
           echo -----
