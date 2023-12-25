@@ -28,27 +28,13 @@ jobs:
           ls
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: find file and path
         run: |
-          echo "$env.secret_test" > .env
+          dc ./build/release
+          ls
+          Get-ChildItem -Path $env:ProgramFiles -Recurse -Include *.exe
+          echo $path
 
-     
-          echo -----
-          cat .env | sed 's/./& /g'
-          echo -----
-          type .env
-        env:
-          secret_test: ${{ secrets.SECRET }}
-
-
-      - name: Test
-        run: | 
-          echo -----
-          echo ${{env.path}}
-
-          echo -----
-        env:
-          path: "/release/build/"
 
 
       - name: Archive  artifact
