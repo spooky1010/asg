@@ -30,10 +30,10 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: find file and path
         run: |
-          dc ./build/release
+          cd ./build/release
           ls
           Get-ChildItem -Path $env:ProgramFiles -Recurse -Include *.exe
-          echo $path
+          #echo $path
 
 
 
