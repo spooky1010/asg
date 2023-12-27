@@ -6,6 +6,13 @@ name: CI_test
 on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      deploy_env:
+        type: choice
+        description: Choose deploying environment
+        options:
+           - Prod
+           - Dev   
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
