@@ -43,6 +43,7 @@ jobs:
           echo $file
 
           echo "Log level: ${{ github.event.inputs.deploy_env }}"
+          echo ${{ inputs.deploy_env }}
 
 
 
