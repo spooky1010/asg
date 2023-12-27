@@ -33,6 +33,7 @@ jobs:
           Rename-Item -Path "test test test.txt" -NewName "test_test_test.txt"
           echo ---------------
           ls
+          
 
       # Runs a set of commands using the runners shell
       - name: find file and path
@@ -40,6 +41,8 @@ jobs:
           $file= Get-ChildItem -Path ./build/release -Recurse -Include *.exe | % { $_.FullName }
           echo ---------------------------
           echo $file
+
+          echo "Log level: ${{ github.event.inputs.deploy_env }}"
 
 
 
