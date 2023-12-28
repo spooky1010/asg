@@ -23,7 +23,7 @@ jobs:
 
       - name: Set env var
         run: |
-          echo "VAR=${{ secrets.TEST }}" >> "$GITHUB_ENV"
+          echo "VAR1=${{ secrets.TEST }}" >> "$github.env"
           echo ________________
           echo $VAR 
       
@@ -34,9 +34,11 @@ jobs:
           ls
           echo ________________
           echo ${{ secrets.TEST }}
+          VAR="${{ secrets.TEST }}"
           echo ________________
           echo "$VAR"
-          echo "${{env.VAR}}"
+          echo "$VAR1"
+          echo "${{env.VAR1}}"
 
 
       # Runs a set of commands using the runners shell
