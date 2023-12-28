@@ -41,19 +41,26 @@ jobs:
           echo "${{env.VAR1}}"
 
 
+
+
+
       # Runs a set of commands using the runners shell
       - name: find file and path
         run: |
           ${file}= Get-ChildItem -Path ./build/release/*.exe | % { $_.FullName }
           echo ---------------------------
-          echo ${file}
+          echo "${file}"
           echo ---------------------------
           echo "${{ github.workspace }}/build/release/"
 
           echo "Log level: ${{ github.event.inputs.deploy_env }}"
           echo ${{ inputs.deploy_env }}
 
-
+      - name: Testing vars
+        run: |
+          echo "${file}"
+          echo ---------------------------
+          echo "${{ github.workspace }}/build/release/"
 
       - name: Archive  artifact
         uses: actions/upload-artifact@v3
