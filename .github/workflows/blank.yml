@@ -29,7 +29,6 @@ jobs:
       
       - name: Rename spaces
         run: |
-          ls
           Rename-Item -Path "test test test.txt" -NewName "test_test_test.txt"
           echo ---------------
           ls
@@ -39,9 +38,6 @@ jobs:
           echo "$VAR"
           echo "${{env.VAR}}"
 
-        
-          
-          
 
       # Runs a set of commands using the runners shell
       - name: find file and path
@@ -50,7 +46,7 @@ jobs:
           echo ---------------------------
           echo ${file}
           echo ---------------------------
-          echo "${GITHUB_WORKSPACE}/build/release/"
+          echo "${{ github.workspace }}/build/release/"
 
           echo "Log level: ${{ github.event.inputs.deploy_env }}"
           echo ${{ inputs.deploy_env }}
