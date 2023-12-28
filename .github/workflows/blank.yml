@@ -34,7 +34,7 @@ jobs:
           ls
           echo ________________
           echo ${{ secrets.TEST }}
-          VAR="${{ secrets.TEST }}"
+          $VAR="${{ secrets.TEST }}"
           echo ________________
           echo "$VAR"
           echo "$VAR1"
