@@ -33,8 +33,10 @@ jobs:
           Rename-Item -Path "test test test.txt" -NewName "test_test_test.txt"
           echo ---------------
           ls
-          echo________________
-          echo ${VAR}
+          echo ________________
+          echo ${env.VAR}
+          echo ________________
+          echo $VAR
         env:
           VAR: ${{ secrets.TEST }}
         
