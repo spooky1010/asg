@@ -46,7 +46,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: find file and path
         run: |
-          $file= Get-ChildItem -Path .\build\release -Include *.exe | % { $_.FullName }
+          $file= Get-ChildItem -Path ./build/release -Include *.exe | % { $_.FullName }
           echo ---------------------------
           echo $file
 
