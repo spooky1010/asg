@@ -1,10 +1,8 @@
 # This is a basic workflow to help you get started with Actions
 
 name: CI_test
-
-# Controls when the workflow will run
 on:
-  # Allows you to run this workflow manually from the Actions tab
+
   workflow_dispatch:
     inputs:
       deploy_env:
@@ -14,14 +12,9 @@ on:
            - Prod
            - Dev   
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: windows-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
@@ -34,9 +27,10 @@ jobs:
           echo ---------------
           ls
           echo ________________
-          echo ${env.VAR}
+          echo ${{env.VAR}}
+          echo ${{ secrets.TEST }}
           echo ________________
-          echo $VAR
+          echo $VAR 
         env:
           VAR: ${{ secrets.TEST }}
         
@@ -46,7 +40,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: find file and path
         run: |
-          $file= Get-ChildItem -Path ./build/release -Include *.exe | % { $_.FullName }
+          $file= Get-ChildItem -Path ./build/release/*.exe | % { $_.FullName }
           echo ---------------------------
           echo $file
 
