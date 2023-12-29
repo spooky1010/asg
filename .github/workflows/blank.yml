@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       deploy_env:
-        type: choice
+        type: 'choice'
         description: Choose deploying environment
         default: Dev
         options:
@@ -31,7 +31,7 @@ jobs:
           Get-Content -Path .\electron-builder.env
           
       - name: Set deploy env Dev
-        if: "${{ github.event.inputs.deploy_env == 'Dev' }}"
+        if: " github.event.inputs.deploy_env == 'Dev' }}"
         run: |
           echo "path=canary-desktop-recorder" >> "electron-builder.env"
           echo "Check env file:"
