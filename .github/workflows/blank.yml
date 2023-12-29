@@ -42,7 +42,9 @@ jobs:
           echo "path=canary-desktop-recorder" >> "electron-builder.env"
           echo "Check env file:"
           Get-Content -Path .\electron-builder.env
-          echo "TARGET_ENV="staging"" >> .env
+          echo ---------------
+          echo 'TARGET_ENV="staging"' >> .env
+          echo ---------------
           Get-Content -Path .\.env
 
           
