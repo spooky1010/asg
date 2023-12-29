@@ -51,7 +51,8 @@ jobs:
           ${file}= Get-ChildItem -Path ./build/release/*.exe | % { $_.FullName }
           echo ---------------------------
           echo "${file}"
-          echo "file_path=paaaaaatttttthhhhhh" >> "$github.env"
+          echo "file_path=${file}" > .env
+          Get-Content -Path .\.env
           echo ---------------------------
           echo "${{ github.workspace }}/build/release/"
 
@@ -61,7 +62,7 @@ jobs:
       - name: Testing vars
         run: |
           echo "Var: ${file_path}"
-          echo "env var: ${{env.file_path}}"
+          echo "env var: ${{ env.file_path }}"
           echo ---------------------------
           echo "${{ github.workspace }}/build/release/"
 
