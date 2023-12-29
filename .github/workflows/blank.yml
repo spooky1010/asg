@@ -77,7 +77,7 @@ jobs:
           echo ---------------------------
           ${name}= Get-ChildItem -Path ./build/release/*.exe | % { $_.Name }
           echo "File name: ${name}"
-
+          ls ./build/release/
           echo ---------------------------
           echo "${{ github.workspace }}/build/release/"
 
