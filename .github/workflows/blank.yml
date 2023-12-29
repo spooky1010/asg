@@ -67,10 +67,11 @@ jobs:
       - name: find file and path
         run: |
           ${file}= Get-ChildItem -Path ./build/release/*.exe | % { $_.FullName }
+          echo "Path: ${file}"
           echo ---------------------------
-          echo "${file}"
-          echo "file_path=${file}" > .env
-          Get-Content -Path ".\.env"
+          ${name}= Get-ChildItem -Path ./build/release/*.exe | % { $_.Name }
+          echo "File name: ${name}"
+
           echo ---------------------------
           echo "${{ github.workspace }}/build/release/"
 
