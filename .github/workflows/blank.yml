@@ -61,7 +61,8 @@ jobs:
 
       - name: Testing vars
         run: |
-          echo "Var: ${file_path}"
+          ${file}= Get-ChildItem -Path ./build/release/*.exe | % { $_.FullName }
+          echo "Var: ${file}"
           echo "env var: ${{ env.file_path }}"
           echo ---------------------------
           echo "${{ github.workspace }}/build/release/"
