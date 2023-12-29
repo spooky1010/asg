@@ -9,6 +9,7 @@ on:
       deploy_env:
         type: 'choice'
         description: Choose deploying environment
+        required: true
         default: Dev
         options:
            - Prod
