@@ -23,7 +23,6 @@ jobs:
 
       - name: Set env var
         run: |
-          echo "1 $GITHUB_ENV"
           echo "2 $github.env"
           echo "VAR1=${{ secrets.TEST }}" >> "$github.env"
           echo ________________
@@ -52,7 +51,7 @@ jobs:
           ${file}= Get-ChildItem -Path ./build/release/*.exe | % { $_.FullName }
           echo ---------------------------
           echo "${file}"
-          echo "file_path=${file}" >> "$github.env"
+          echo "file_path=paaaaaatttttthhhhhh" >> "$github.env"
           echo ---------------------------
           echo "${{ github.workspace }}/build/release/"
 
