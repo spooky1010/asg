@@ -13,7 +13,12 @@ on:
         default: Dev
         options:
            - Prod
-           - Dev   
+           - Dev
+      upload_artifact:
+        type: boolean
+        description: Choose deployment environment
+        required: true
+        default: false           
 
 jobs:
   build:
@@ -47,6 +52,7 @@ jobs:
           echo $VAR 
       
       - name: Rename spaces
+        if: "${{ github.event.inputs.upload_artifact == 'true' }}"
         run: |
           Rename-Item -Path "test test test.txt" -NewName "test_test_test.txt"
           echo ---------------
