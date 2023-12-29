@@ -32,7 +32,7 @@ jobs:
           Get-Content -Path .\electron-builder.env
           
       - name: Set deploy env Dev
-        if: "${{ github.event.inputs.deploy_env == 'Dev' }}"
+        if: "${{ github.event.inputs.deploy_env == null || github.event.inputs.deploy_env == 'Dev' }}"
         run: |
           echo "path=canary-desktop-recorder" >> "electron-builder.env"
           echo "Check env file:"
