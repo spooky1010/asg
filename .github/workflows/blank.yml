@@ -21,6 +21,21 @@ jobs:
 
       # Runs a single command using the runners shell
 
+      - name: Set deploy env Prod
+        if: "${{ github.event.inputs.deploy_env == 'Prod' }}"
+        run: |
+          echo "path=desktop-recorder" >> "electron-builder.env"
+          ls
+          Get-Content -Path .\electron-builder.env
+          
+      - name: Set deploy env Dev
+        if: "${{ github.event.inputs.deploy_env == 'Dev' }}"
+        run: |
+          echo "path=canary-desktop-recorder" >> "electron-builder.env"
+          ls
+          Get-Content -Path .\electron-builder.env
+          
+
       - name: Set env var
         run: |
           echo "2 $github.env"
