@@ -1,4 +1,4 @@
-# This is a basic workflow to help you get started with Actions
+u# This is a basic workflow to help you get started with Actions
 
 name: CI_test
 on:
@@ -8,6 +8,7 @@ on:
       deploy_env:
         type: choice
         description: Choose deploying environment
+        dafaults: Dev
         options:
            - Prod
            - Dev   
@@ -25,14 +26,14 @@ jobs:
         if: "${{ github.event.inputs.deploy_env == 'Prod' }}"
         run: |
           echo "path=desktop-recorder" >> "electron-builder.env"
-          ls
+          echo: "Check env file:"
           Get-Content -Path .\electron-builder.env
           
       - name: Set deploy env Dev
         if: "${{ github.event.inputs.deploy_env == 'Dev' }}"
         run: |
           echo "path=canary-desktop-recorder" >> "electron-builder.env"
-          ls
+          echo: "Check env file:"
           Get-Content -Path .\electron-builder.env
           
 
