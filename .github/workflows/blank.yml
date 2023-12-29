@@ -2,7 +2,8 @@
 
 name: CI_test
 on:
-
+  push:
+    branches: [ "main" ]
   workflow_dispatch:
     inputs:
       deploy_env:
@@ -26,14 +27,14 @@ jobs:
         if: "${{ github.event.inputs.deploy_env == 'Prod' }}"
         run: |
           echo "path=desktop-recorder" >> "electron-builder.env"
-          echo: "Check env file:"
+          echo "Check env file:"
           Get-Content -Path .\electron-builder.env
           
       - name: Set deploy env Dev
         if: "${{ github.event.inputs.deploy_env == 'Dev' }}"
         run: |
           echo "path=canary-desktop-recorder" >> "electron-builder.env"
-          echo: "Check env file:"
+          echo "Check env file:"
           Get-Content -Path .\electron-builder.env
           
 
