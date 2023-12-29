@@ -39,9 +39,9 @@ jobs:
       - name: Set deploy env Dev
         if: "${{ github.event.inputs.deploy_env == null || github.event.inputs.deploy_env == 'Dev' }}"
         run: |
-          echo "path=canary-desktop-recorder" >> "electron-builder.env"
+          echo "path=canary-desktop-recorder" > ".env"
           echo "Check env file:"
-          Get-Content -Path .\electron-builder.env
+          Get-Content -Path .\.env
           echo ---------------
           echo 'TARGET_ENV="staging"' >> .env
           echo ---------------
