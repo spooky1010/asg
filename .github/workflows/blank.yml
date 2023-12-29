@@ -52,7 +52,7 @@ jobs:
           echo ---------------------------
           echo "${file}"
           echo "file_path=${file}" > .env
-          Get-Content -Path .\.env
+          Get-Content -Path ".\.env"
           echo ---------------------------
           echo "${{ github.workspace }}/build/release/"
 
