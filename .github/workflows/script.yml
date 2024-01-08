@@ -36,7 +36,7 @@ jobs:
 
         
           $env:test="${{ secrets.TEST }}"
-          echo $test
+          echo "Env: ${env.test}"
 
 
           echo "call .\CodeSignTool.bat credential_info -credential_id=%ES_PASSWORD% -username=%ES_USERNAME% -password=%ES_USERNAME%" >> "sign.bat"
@@ -45,4 +45,5 @@ jobs:
           echo -----------
           .\sign.bat
           echo -----------
+          
           
