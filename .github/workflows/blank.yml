@@ -47,6 +47,13 @@ jobs:
           echo ---------------
           Get-Content -Path .\.env
 
+
+      - name: start bat
+        run: |
+          .\test.bat 12345
+
+
+
           
           
       
