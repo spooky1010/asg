@@ -14,11 +14,24 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+
+      - name:  Configure CodeSignTool
+        run: |
+          echo 'SIGN_TOOL_PATH=".\sign.bat"' >> .env
+          $URL="https://www.ssl.com/download/codesigntool-for-windows/"
+          $PATH="CodeSignTool-windows.zip"
+          Invoke-WebRequest -URI $URL -OutFile $PATH
+          Expand-Archive -Force $PATH -DestinationPath "${{ github.workspace }}"
+          ls
+          echo ---------------------------
+          .\CodeSignTool.bat --version
+          echo ---------------------------
+
       - name: start bat
         run: |
           $env:test="${{ secrets.TEST }}"
           echo $test
 
 
-          echo 'Start-Process -FilePath ".\CodeSignTool.bat credential_info -credential_id=8f3e74ba-3818-4a3e-bb49-32ad0a18809f -username=nathan_liveawarelabs -password=tEmXK#h?LR7!%pN" >> "sign.ps1"
-          .\sign.ps1
+          echo 'start .\CodeSignTool.bat credential_info -credential_id="8f3e74ba-3818-4a3e-bb49-32ad0a18809f" -username="nathan_liveawarelabs" -password="tEmXK#h?LR7!%pN"' >> "sign.bat"
+          .\sign.bat
