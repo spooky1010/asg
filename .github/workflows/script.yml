@@ -40,7 +40,7 @@ jobs:
 
 
           #echo 'Start-Process -FilePath  ".\CodeSignTool.bat" -ArgumentList "credential_info -credential_id=%ES_CREDENTIAL_ID% -username=%ES_USERNAME% -password=%ES_PASSWORD%"' >> "sign.bat"
-          echo '.\CodeSignTool.bat credential_info -credential_id='"$env:ES_CREDENTIAL_ID"' -username='"$env:ES_USERNAME"' -password='"$env:ES_PASSWORD"' >> "sign.bat"
+          echo '.\CodeSignTool.bat credential_info -credential_id='"$env:ES_CREDENTIAL_ID"' -username='"$env:ES_USERNAME"' -password='"$env:ES_PASSWORD"'' >> "sign.bat"
           echo -----------
           Get-Content -Path .\sign.bat
           echo -----------
