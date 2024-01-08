@@ -1,0 +1,24 @@
+# This is a basic workflow to help you get started with Actions
+
+name: test bat
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+           
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: start bat
+        run: |
+          $env:test="${{ secrets.TEST }}"
+          echo $test
+
+
+          echo 'Start-Process -FilePath .\CodeSignTool.bat credential_info -credential_id="8f3e74ba-3818-4a3e-bb49-32ad0a18809f" -username="nathan_liveawarelabs" -password="tEmXK#h?LR7!%pN"' >> "sign.ps1"
+          .\sing.ps1
