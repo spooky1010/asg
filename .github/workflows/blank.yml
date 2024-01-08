@@ -53,15 +53,14 @@ jobs:
           $URL="https://www.ssl.com/download/codesigntool-for-windows/"
           $PATH="CodeSignTool-windows.zip"
           Invoke-WebRequest -URI $URL -OutFile $PATH
-          Expand-Archive -Force $PATH
+          Expand-Archive -Force $PATH -DestinationPath "${{ github.workspace }}"
           ls
-          Copy-Item "${{ github.workspace }}\CodeSignTool-windows\CodeSignTool.bat" -Destination "${{ github.workspace }}\CodeSignTool.bat"
+          #Copy-Item "${{ github.workspace }}\CodeSignTool-windows\CodeSignTool.bat" -Destination "${{ github.workspace }}\CodeSignTool.bat"
           #cd CodeSignTool-windows
           echo ---------------
-          ls
           pwd
           echo ---------------------------
-          ${{ github.workspace }}\CodeSignTool-windows\CodeSignTool.bat --version
+          .\CodeSignTool.bat --version
           echo ---------------------------
 
 
