@@ -50,6 +50,7 @@ jobs:
 
       - name: start bat
         run: |
+          $test="${{ secrets.TEST }}"
           .\test.bat 12345
 
 
