@@ -62,6 +62,7 @@ jobs:
           echo ---------------------------
           .\CodeSignTool.bat --version
           echo ---------------------------
+          %test%
 
 
 
@@ -72,6 +73,7 @@ jobs:
           $env:test="${{ secrets.TEST }}"
           echo $test
           .\test.bat 12345
+          echo %test%
 
 
 
