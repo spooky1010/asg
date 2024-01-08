@@ -1,7 +1,7 @@
-$URL="https://www.ssl.com/download/codesigntool-for-windows/"
-$PATH="CodeSignTool-windows.zip"
-Invoke-WebRequest -URI $URL -OutFile $PATH
-Expand-Archive -Force $PATH
+Set URL="https://www.ssl.com/download/codesigntool-for-windows/"
+Set PATH="CodeSignTool-windows.zip"
+powershell -Command "Invoke-WebRequest -URI $URL -OutFile $PATH"
+powershell -Command "Expand-Archive -Force $PATH"
 ls
 cd CodeSignTool-windows
 pwd
