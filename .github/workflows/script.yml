@@ -29,11 +29,20 @@ jobs:
 
       - name: start bat
         run: |
+          $env:ES_CREDENTIAL_ID="${{ secrets.ES_CREDENTIAL_ID }}"
+          $env:ES_USERNAME="${{ secrets.ES_USERNAME }}"
+          $env:ES_PASSWORD="${{ secrets.ES_PASSWORD }}"
+
+
+        
           $env:test="${{ secrets.TEST }}"
           echo $test
 
 
-          echo "call .\CodeSignTool.bat credential_info -credential_id='''8f3e74ba-3818-4a3e-bb49-32ad0a18809f''' -username='''nathan_liveawarelabs''' -password='''tEmXK#h?LR7!%pN'''" >> "sign.bat"
+          echo "call .\CodeSignTool.bat credential_info -credential_id=%ES_PASSWORD% -username=%ES_USERNAME% -password=%ES_USERNAME%" >> "sign.bat"
+          echo -----------
+          Get-Content -Path .\sign.bat
+          echo -----------
           .\sign.bat
           echo -----------
           
