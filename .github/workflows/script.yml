@@ -40,12 +40,12 @@ jobs:
 
 
           echo '.\CodeSignTool.bat credential_info -credential_id=%ES_CREDENTIAL_ID% -username=%ES_USERNAME% -password="%ES_PASSWORD%"' >> "sign.bat"
-          #echo '.\CodeSignTool.bat credential_info -credential_id="$env:ES_CREDENTIAL_ID" -username="$env:ES_USERNAME" -password="$env:ES_PASSWORD"' >> "sign.bat"
+           echo '& .\CodeSignTool.bat credential_info -credential_id=%ES_CREDENTIAL_ID% -username=%ES_USERNAME% -password="%ES_PASSWORD%"' >> "sign.bat"
           echo -----------
           Get-Content -Path .\sign.bat
           echo -----------
           .\sign.bat
           echo -----------
-          .\CodeSignTool.bat credential_info -credential_id="$env:ES_CREDENTIAL_ID" -username="$env:ES_USERNAME" -password="$env:ES_PASSWORD"
+          #.\CodeSignTool.bat credential_info -credential_id="$env:ES_CREDENTIAL_ID" -username="$env:ES_USERNAME" -password="$env:ES_PASSWORD"
           echo -----------
-          .\CodeSignTool.bat credential_info -credential_id=${{ secrets.ES_CREDENTIAL_ID }} -username=${{ secrets.ES_USERNAME }} -password="${{ secrets.ES_PASSWORD }}"
+          #.\CodeSignTool.bat credential_info -credential_id=${{ secrets.ES_CREDENTIAL_ID }} -username=${{ secrets.ES_USERNAME }} -password="${{ secrets.ES_PASSWORD }}"
