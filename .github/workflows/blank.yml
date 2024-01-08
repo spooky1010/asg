@@ -48,6 +48,24 @@ jobs:
           Get-Content -Path .\.env
 
 
+      - name:  Configure CodeSignTool
+        run: |
+          $URL="https://www.ssl.com/download/codesigntool-for-windows/"
+          $PATH="CodeSignTool-windows.zip"
+          Invoke-WebRequest -URI $URL -OutFile $PATH
+          Expand-Archive -Force $PATH
+          ls
+          Copy-Item "${{ github.workspace }}\CodeSignTool-windows\CodeSignTool.bat" -Destination "${{ github.workspace }}\CodeSignTool.bat"
+          #cd CodeSignTool-windows
+          pwd
+          echo ---------------------------
+          .\CodeSignTool.bat --version
+          echo ---------------------------
+
+
+
+
+
       - name: start bat
         run: |
           $env:test="${{ secrets.TEST }}"
