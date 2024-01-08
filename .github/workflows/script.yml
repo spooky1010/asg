@@ -40,7 +40,8 @@ jobs:
 
 
           echo '.\CodeSignTool.bat credential_info -credential_id=%ES_CREDENTIAL_ID% -username=%ES_USERNAME% -password="%ES_PASSWORD%"' >> "sign.bat"
-           echo '& .\CodeSignTool.bat credential_info -credential_id=%ES_CREDENTIAL_ID% -username=%ES_USERNAME% -password="%ES_PASSWORD%"' >> "sign.bat"
+          echo 'echo "--------------"' >> "sign.bat"
+          echo '& .\CodeSignTool.bat credential_info -credential_id=%ES_CREDENTIAL_ID% -username=%ES_USERNAME% -password="%ES_PASSWORD%"' >> "sign.bat"
           echo -----------
           Get-Content -Path .\sign.bat
           echo -----------
