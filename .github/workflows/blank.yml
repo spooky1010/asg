@@ -57,9 +57,11 @@ jobs:
           ls
           Copy-Item "${{ github.workspace }}\CodeSignTool-windows\CodeSignTool.bat" -Destination "${{ github.workspace }}\CodeSignTool.bat"
           #cd CodeSignTool-windows
+          echo ---------------
+          ls
           pwd
           echo ---------------------------
-          .\CodeSignTool.bat --version
+          ${{ github.workspace }}\CodeSignTool-windows\CodeSignTool.bat --version
           echo ---------------------------
 
 
