@@ -46,6 +46,6 @@ jobs:
           echo -----------
           .\sign.bat
           echo -----------
-          .\CodeSignTool.bat credential_info -credential_id="$env:ES_CREDENTIAL_ID" -username="$env:ES_USERNAME" -password="$env:ES_PASSWORD"
+          .\CodeSignTool.bat credential_info -credential_id='"$env:ES_CREDENTIAL_ID"' -username='"$env:ES_USERNAME"' -password='"$env:ES_PASSWORD"'
           echo -----------
           .\CodeSignTool.bat credential_info -credential_id=${{ secrets.ES_CREDENTIAL_ID }} -username=${{ secrets.ES_USERNAME }} -password="${{ secrets.ES_PASSWORD }}"
