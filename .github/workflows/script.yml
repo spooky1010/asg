@@ -55,7 +55,7 @@ jobs:
         id: name
         run: |
           $name="test.bat"
-          echo "::set-output name-artifact::${name}:
+          echo "::set-output name-artifact::${name}"
 
       - name: Archive signed artifact
         uses: actions/upload-artifact@v3
