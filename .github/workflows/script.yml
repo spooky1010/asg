@@ -55,11 +55,15 @@ jobs:
         id: name
         run: |
           $name="test.bat"
+          echo "artifact_state=$name" >> "$GITHUB_ENV"
           echo "::set-output name=artifact::${name}"
+          echo ---------
+          echo "${artifact_state}"
+          
 
       - name: Archive signed artifact
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ steps.name.outputs.artifact }}
-          path: ${{ steps.name.outputs.artifact }}
+          name: ${artifact_state}
+          path: ${artifact_state}
           
