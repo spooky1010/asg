@@ -50,3 +50,16 @@ jobs:
           #.\CodeSignTool.bat credential_info -credential_id="$env:ES_CREDENTIAL_ID" -username="$env:ES_USERNAME" -password="$env:ES_PASSWORD"
           echo -----------
           #.\CodeSignTool.bat credential_info -credential_id=${{ secrets.ES_CREDENTIAL_ID }} -username=${{ secrets.ES_USERNAME }} -password="${{ secrets.ES_PASSWORD }}"
+
+      - name: start bat
+        id: name
+        run: |
+          $name="test.bat"
+          echo "::set-output name-artifact::${name}
+
+      - name: Archive signed artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ steps.name.outputs.artifact }}
+          path: ${{ steps.name.outputs.artifact }}
+          
