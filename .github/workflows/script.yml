@@ -58,12 +58,12 @@ jobs:
           echo "artifact_state=$name" >> $env:GITHUB_OUTPUT
           echo "::set-output name=artifact::${name}"
           echo ---------
-          echo ${{ needs.EnvSetup.outputs.var_artifact_state }}
+          echo ${{ needs.name.outputs.var_artifact_state }}
           
 
       - name: Archive signed artifact
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ needs.EnvSetup.outputs.var_artifact_state }}
-          path: ${{ needs.EnvSetup.outputs.var_artifact_state }}
+          name: ${{ needs.name.outputs.var_artifact_state }}
+          path: ${{ needs.name.outputs.var_artifact_state }}
           
